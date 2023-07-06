@@ -2,10 +2,10 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
-import java.io.IOException;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
 
 public class AddItems extends JFrame {
     private JPanel contentPane;
@@ -32,8 +31,8 @@ public class AddItems extends JFrame {
     private JLabel lblReportsTab;
     private JLabel lblLogoutTab;
     private JLabel lblInsertImage;
-    private JLabel lblSave;
     private JLabel lblClear;
+    private JLabel lblSave;
     private JLabel lblBg;
     private String insertedImage;
 
@@ -69,27 +68,27 @@ public class AddItems extends JFrame {
         lblDisplayImage.setBounds(277, 181, 306, 399);
         contentPane.add(lblDisplayImage);
 
-        textField_ItemName = new JTextField();
-        textField_ItemName.setBounds(642, 227, 263, 46);
+        textField_ItemName = new JTextField("name");
+        textField_ItemName.setBounds(640, 239, 263, 46);
         textField_ItemName.setBorder(null);
         contentPane.add(textField_ItemName);
         textField_ItemName.setColumns(10);
 
-        textField_ItemStatus = new JTextField();
+        textField_ItemStatus = new JTextField("status");
         textField_ItemStatus.setColumns(10);
-        textField_ItemStatus.setBounds(642, 351, 263, 46);
+        textField_ItemStatus.setBounds(642, 358, 263, 46);
         textField_ItemStatus.setBorder(null);
         contentPane.add(textField_ItemStatus);
 
-        textField_ItemDate = new JTextField();
+        textField_ItemDate = new JTextField("date");
         textField_ItemDate.setColumns(10);
-        textField_ItemDate.setBounds(642, 471, 263, 46);
+        textField_ItemDate.setBounds(642, 480, 263, 46);
         textField_ItemDate.setBorder(null);
         contentPane.add(textField_ItemDate);
 
-        textField_ItemDescription = new JTextField();
+        textField_ItemDescription = new JTextField("descrip");
         textField_ItemDescription.setColumns(10);
-        textField_ItemDescription.setBounds(933, 227, 263, 46);
+        textField_ItemDescription.setBounds(937, 239, 263, 46);
         textField_ItemDescription.setBorder(null);
         contentPane.add(textField_ItemDescription);
 
@@ -183,12 +182,12 @@ public class AddItems extends JFrame {
         });
 
         lblSave = new JLabel("");
-        lblSave.setBounds(783, 623, 198, 46);
+        lblSave.setBounds(784, 623, 198, 46);
         contentPane.add(lblSave);
         lblSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 String itemName = textField_ItemName.getText();
-                String image = getInsertedImagePath();
+                String itemImage = getInsertedImagePath();
                 String itemStatus = textField_ItemStatus.getText();
                 String itemDate = textField_ItemDate.getText();
                 String itemDescription = textField_ItemDescription.getText();
@@ -199,9 +198,15 @@ public class AddItems extends JFrame {
                     int choice = JOptionPane.showConfirmDialog(null, "Do you want to save this information?", "Save",
                         JOptionPane.YES_NO_OPTION);
                     if (choice == JOptionPane.YES_OPTION) {
-                        saveItem(itemName,image, itemStatus, itemDate, itemDescription);
+                        saveItem(itemName, itemImage, itemDate, itemDescription,itemStatus );
                         JOptionPane.showMessageDialog(null, "Information Saved!", "Saved",
                             JOptionPane.INFORMATION_MESSAGE);
+                        lblDisplayImage.setIcon(null);
+                        textField_ItemName.setText("");
+                        textField_ItemStatus.setText("");
+                        textField_ItemDate.setText("");
+                        textField_ItemDescription.setText("");
+                        
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please enter all information!", "Error",
@@ -211,7 +216,7 @@ public class AddItems extends JFrame {
         });
         
         lblClear = new JLabel("");
-        lblClear.setBounds(991, 623, 205, 46);
+        lblClear.setBounds(992, 623, 204, 46);
         contentPane.add(lblClear);
         lblClear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -233,7 +238,7 @@ public class AddItems extends JFrame {
     }
     
     
-    public void  saveItem(String name, String image, String date,String description,  String status) {
+    public void  saveItem(String name, String image, String date, String description,  String status) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\NITRO 5\\eclipse-workspace\\RentalSystem\\src\\Tools", true));
             writer.write(name + "|" + image+ "|" + date + "|" + description+ "|" + status);
@@ -247,6 +252,9 @@ public class AddItems extends JFrame {
     public String getInsertedImagePath() {
         return insertedImage;
     }
+    
+    
 }
+
     
     
