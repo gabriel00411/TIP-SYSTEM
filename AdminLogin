@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class LoginGUI extends JFrame {
+public class AdminLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField PasswordInput;
@@ -32,7 +32,7 @@ public class LoginGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginGUI frame = new LoginGUI();
+					AdminLogin frame = new AdminLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class LoginGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginGUI() {
+	public AdminLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1296, 799);
 		contentPane = new JPanel();
@@ -73,12 +73,6 @@ public class LoginGUI extends JFrame {
 		contentPane.add(PasswordInput);
 		PasswordInput.setColumns(10);
 		
-		JLabel adminLoginPic = new JLabel("");
-		adminLoginPic.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		adminLoginPic.setIcon(new ImageIcon("C:\\UsersNITRO 5\\OneDrive\\Desktop\\Rental\\1in.png"));
-		adminLoginPic.setBounds(0, 0, 1000, 600);
-		contentPane.add(adminLoginPic);
-		
         
 		adminLoginBtn = new JButton("");
 		
@@ -98,9 +92,9 @@ public class LoginGUI extends JFrame {
                 	
 					if (UserInput.equals("Admin") && PassInput.equals("Admin123")) {
 						JOptionPane.showMessageDialog(null, "Login successful!");
-                        HomeGUI AdmPg = new HomeGUI();
+                        HomePage AdmPg = new HomePage();
                         AdmPg.setVisible(true);
-                        new HomeGUI();
+                        new HomePage();
                         dispose();
                         userExists = true;
                         break;
