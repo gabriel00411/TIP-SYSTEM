@@ -1,0 +1,172 @@
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JToggleButton;
+
+public class ToolsGUI extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ToolsGUI frame = new ToolsGUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ToolsGUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1296, 799);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		// Home button
+		JButton Homebtn = new JButton("");
+        Homebtn.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        Homebtn.setBounds(39, 183, 133, 29);
+        Homebtn.setOpaque(false);
+        Homebtn.setContentAreaFilled(false);
+        Homebtn.setBorderPainted(false);
+        contentPane.add(Homebtn);
+        
+        // Action listener for the Home button
+        Homebtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Open the HomeGUI class
+                HomePage homeGUI = new HomePage();
+                homeGUI.setVisible(true);
+                dispose(); // Close the current window
+            }
+        });
+        
+        
+        // Tools button
+        JButton Toolsbtn = new JButton("");
+        Toolsbtn.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        Toolsbtn.setBounds(39, 241, 133, 29);
+        Toolsbtn.setOpaque(false);
+		Toolsbtn.setContentAreaFilled(false);
+		Toolsbtn.setBorderPainted(false);
+        contentPane.add(Toolsbtn);
+        
+		
+		// Loss and Damage button
+		JButton ReportListbtn = new JButton("");
+		ReportListbtn.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+		ReportListbtn.setBounds(39, 300, 133, 29);
+		ReportListbtn.setOpaque(false);
+		ReportListbtn.setContentAreaFilled(false);
+		ReportListbtn.setBorderPainted(false);
+		contentPane.add(ReportListbtn);
+		
+		ReportListbtn.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        dispose(); // Close the HomeGUI
+
+		        // Open the LossAndDamageListGUI class
+		        EventQueue.invokeLater(new Runnable() {
+		            public void run() {
+		                try {
+		                    LossAndDamageList frame = new LossAndDamageList();
+		                    frame.setVisible(true);
+		                } catch (Exception e) {
+		                    e.printStackTrace();
+		                }
+		            }
+		        });
+		    }
+		});
+
+		
+		// Logout button
+		JButton Logoutbtn = new JButton("");
+		Logoutbtn.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+		Logoutbtn.setBounds(39, 360, 133, 29);
+		Logoutbtn.setOpaque(false);
+		Logoutbtn.setContentAreaFilled(false);
+		Logoutbtn.setBorderPainted(false);
+		contentPane.add(Logoutbtn);
+		
+		Logoutbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Open the LoginGUI class
+                AdminLogin loginGUI = new AdminLogin();
+                loginGUI.setVisible(true);
+                dispose(); // Close the current window
+            }
+        });
+		
+		JButton AddBtn = new JButton("");
+		AddBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddItems contentPane = new AddItems();
+				contentPane.setVisible(true);
+				dispose();
+			}
+		});
+
+		
+		AddBtn.setBounds(1006, 21, 61, 69);
+		AddBtn.setOpaque(false);
+		AddBtn.setContentAreaFilled(false);
+		AddBtn.setBorderPainted(false);
+		contentPane.add(AddBtn);
+		
+		JButton ItmBtn = new JButton("");
+		ItmBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ItemTracker contentPane = new ItemTracker();
+				contentPane.setVisible(true);
+				dispose();
+			}
+		});
+		ItmBtn.setBounds(1167, 21, 61, 69);
+		ItmBtn.setOpaque(false);
+		ItmBtn.setContentAreaFilled(false);
+		ItmBtn.setBorderPainted(false);
+		contentPane.add(ItmBtn);
+		
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(274, 124, 964, 615);
+		contentPane.add(panel);
+		
+		
+		JLabel Imagelbl = new JLabel("");
+		Imagelbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\Tools.png"));
+		Imagelbl.setBounds(0, 0, 1280, 761);
+		contentPane.add(Imagelbl);
+		
+		
+		
+		
+		
+		
+	}
+}
