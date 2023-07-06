@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomeGUI extends JFrame {
+public class HomePage extends JFrame {
 
 	private JPanel contentPane;
 
@@ -16,7 +16,7 @@ public class HomeGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HomeGUI frame = new HomeGUI();
+					HomePage frame = new HomePage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +28,7 @@ public class HomeGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public HomeGUI() {
+	public HomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1296, 799);
 		contentPane = new JPanel();
@@ -83,7 +83,7 @@ public class HomeGUI extends JFrame {
 		        EventQueue.invokeLater(new Runnable() {
 		            public void run() {
 		                try {
-		                    LossAndDamageListGUI frame = new LossAndDamageListGUI();
+		                    LossAndDamageList frame = new LossAndDamageList();
 		                    frame.setVisible(true);
 		                } catch (Exception e) {
 		                    e.printStackTrace();
@@ -106,7 +106,7 @@ public class HomeGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Code to navigate to the LoginGUI class
-                LoginGUI loginGUI = new LoginGUI();
+                AdminLogin loginGUI = new AdminLogin();
                 loginGUI.setVisible(true);
                 dispose(); // Close the current window
             }
