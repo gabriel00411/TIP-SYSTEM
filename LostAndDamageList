@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.border.*;
 
-public class LossAndDamageListGUI extends JFrame {
+public class LossAndDamageList extends JFrame {
 	
 	
     private DefaultListModel<String> damageListModel;
@@ -17,7 +17,7 @@ public class LossAndDamageListGUI extends JFrame {
 
 
 
-    public LossAndDamageListGUI() {
+    public LossAndDamageList() {
         setBounds(new Rectangle(0, 0, 1280, 761));
         setTitle("Damage & Loss Reports");
         setSize(1280, 761);
@@ -31,7 +31,7 @@ public class LossAndDamageListGUI extends JFrame {
         damagePanel.setForeground(Color.WHITE);
         damagePanel.setBackground(Color.LIGHT_GRAY);
         damagePanel.setBorder(BorderFactory.createTitledBorder("Damage Reports"));
-        damagePanel.setBounds(247, 76, 480, 533);
+        damagePanel.setBounds(247, 94, 480, 515);
 
         damageListModel = new DefaultListModel<>();
         JScrollPane damageScrollPane = new JScrollPane();
@@ -46,7 +46,7 @@ public class LossAndDamageListGUI extends JFrame {
         JPanel lossPanel = new JPanel((LayoutManager) null);
         lossPanel.setBackground(Color.LIGHT_GRAY);
         lossPanel.setBorder(BorderFactory.createTitledBorder("Loss Reports"));
-        lossPanel.setBounds(759, 76, 480, 533);
+        lossPanel.setBounds(759, 94, 480, 515);
         mainPanel.add(lossPanel);
         lossPanel.setLayout(new BorderLayout());
 
@@ -95,8 +95,8 @@ public class LossAndDamageListGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Code to navigate to the HomeGUI class
-                HomeGUI homeGUI = new HomeGUI();
-                homeGUI.setVisible(true);
+                HomePage homepage = new HomePage();
+                homepage.setVisible(true);
                 dispose(); // Close the current window
             }
         });
@@ -132,10 +132,13 @@ public class LossAndDamageListGUI extends JFrame {
         Logoutbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Code to navigate to the LoginGUI class
-                LoginGUI loginGUI = new LoginGUI();
-                loginGUI.setVisible(true);
-                dispose(); // Close the current window
+                int option = JOptionPane.showConfirmDialog(LossAndDamageList.this, "Do you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    // Code to navigate to the AdminLogin class
+                    AdminLogin adminLogin = new AdminLogin();
+                    adminLogin.setVisible(true);
+                    dispose(); // Close the current window
+                }
             }
         });
 
@@ -153,6 +156,10 @@ public class LossAndDamageListGUI extends JFrame {
         backgroundLbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\Reports.png"));
         backgroundLbl.setBounds(0, 0, 1280, 761);
         mainPanel.add(backgroundLbl);
+        
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(1073, 46, 2, 2);
+        mainPanel.add(scrollPane);
 
         addDamageButton.addActionListener(new ActionListener() {
             @Override
@@ -164,9 +171,9 @@ public class LossAndDamageListGUI extends JFrame {
                         "Cause of Damage:", causeTextField
                 };
 
-                int option = JOptionPane.showConfirmDialog(LossAndDamageListGUI.this, message, "Add Damage Report", JOptionPane.OK_CANCEL_OPTION);
+                int option = JOptionPane.showConfirmDialog(LossAndDamageList.this, message, "Add Damage Report", JOptionPane.OK_CANCEL_OPTION);
                 if (option == JOptionPane.OK_OPTION) {
-                    int confirmation = JOptionPane.showConfirmDialog(LossAndDamageListGUI.this, "Are you sure you want to update the list?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                    int confirmation = JOptionPane.showConfirmDialog(LossAndDamageList.this, "Are you sure you want to update the list?", "Confirmation", JOptionPane.YES_NO_OPTION);
                     if (confirmation == JOptionPane.YES_OPTION) {
                         String selectedTool = (String) toolsComboBox.getSelectedItem();
                         String cause = causeTextField.getText();
@@ -216,14 +223,14 @@ public class LossAndDamageListGUI extends JFrame {
                 panel.add(yearComboBox);
 
                 int option = JOptionPane.showConfirmDialog(
-                        LossAndDamageListGUI.this,
+                		LossAndDamageList.this,
                         panel,
                         "Add Loss Report",
                         JOptionPane.OK_CANCEL_OPTION
                 );
 
                 if (option == JOptionPane.OK_OPTION) {
-                    int confirmation = JOptionPane.showConfirmDialog(LossAndDamageListGUI.this, "Are you sure you want to update the list?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                    int confirmation = JOptionPane.showConfirmDialog(LossAndDamageList.this, "Are you sure you want to update the list?", "Confirmation", JOptionPane.YES_NO_OPTION);
                     if (confirmation == JOptionPane.YES_OPTION) {
                         String equipment = (String) equipmentComboBox.getSelectedItem();
                         String day = (String) dayComboBox.getSelectedItem();
@@ -245,7 +252,7 @@ public class LossAndDamageListGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = damageList.getSelectedIndex();
                 if (selectedIndex != -1) {
-                    int dialogResult = JOptionPane.showConfirmDialog(LossAndDamageListGUI.this,
+                    int dialogResult = JOptionPane.showConfirmDialog(LossAndDamageList.this,
                             "Are you sure you want to delete this report?",
                             "Delete Damage Report",
                             JOptionPane.YES_NO_OPTION);
@@ -254,7 +261,7 @@ public class LossAndDamageListGUI extends JFrame {
                         saveReportsToFile();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(LossAndDamageListGUI.this,
+                    JOptionPane.showMessageDialog(LossAndDamageList.this,
                             "Please select a damage report to delete.");
                 }
             }
@@ -265,7 +272,7 @@ public class LossAndDamageListGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = lossList.getSelectedIndex();
                 if (selectedIndex != -1) {
-                    int dialogResult = JOptionPane.showConfirmDialog(LossAndDamageListGUI.this,
+                    int dialogResult = JOptionPane.showConfirmDialog(LossAndDamageList.this,
                             "Are you sure you want to delete this report?",
                             "Delete Loss Report",
                             JOptionPane.YES_NO_OPTION);
@@ -274,7 +281,7 @@ public class LossAndDamageListGUI extends JFrame {
                         saveReportsToFile();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(LossAndDamageListGUI.this,
+                    JOptionPane.showMessageDialog(LossAndDamageList.this,
                             "Please select a loss report to delete.");
                 }
             }
@@ -322,9 +329,9 @@ public class LossAndDamageListGUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                LossAndDamageListGUI gui = new LossAndDamageListGUI();
+                LossAndDamageList gui = new LossAndDamageList();
                 gui.setVisible(true);
             }
         });
     }
-}
+} 
