@@ -46,6 +46,8 @@ public class HomePage extends JFrame {
         Homebtn.setContentAreaFilled(false);
         Homebtn.setBorderPainted(false);
         contentPane.add(Homebtn);
+        
+        
 		
 		
 		JButton Toolsbtn = new JButton("");
