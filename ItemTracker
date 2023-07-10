@@ -172,10 +172,6 @@ public class ItemTracker extends JFrame {
         backgroundLbl.setBounds(0, 0, 1280, 761);
         mainPanel.add(backgroundLbl);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(1073, 46, 2, 2);
-        mainPanel.add(scrollPane);
-
         addStudentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
