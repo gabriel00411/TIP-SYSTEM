@@ -28,6 +28,7 @@ public class ToolsInformationFrame extends JFrame {
     private JTextField textField_1;
     private JTextField textField_2;
     private JButton removeButton;
+    private JLabel lblNewLabel_1;
 
         /*
 
@@ -56,12 +57,12 @@ public class ToolsInformationFrame extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
-        contentPane.setLayout(null);
 
         ImageIcon icon = new ImageIcon(itemsList.get(index).getItemImage());
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(225, 299, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgScale);
+        contentPane.setLayout(null);
         JLabel lblNewLabel = new JLabel(scaledIcon);
         lblNewLabel.setBounds(38, 108, 225, 299);
         contentPane.add(lblNewLabel);
@@ -85,11 +86,8 @@ public class ToolsInformationFrame extends JFrame {
         textArea.setBounds(288, 268, 409, 139);
         contentPane.add(textArea);
         
-        removeButton = new JButton("REMOVED");
-        removeButton.setBounds(20, 20, 100, 30);
-        removeButton.setOpaque(false);
-        removeButton.setContentAreaFilled(false);
-        removeButton.setBorderPainted(false);
+        removeButton = new JButton("REMOVE");
+        removeButton.setBounds(38, 43, 100, 30);
         removeButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     int choice = JOptionPane.showConfirmDialog(null, "Do you want to remove this item?", "Remove Item", JOptionPane.YES_NO_OPTION);
@@ -106,6 +104,11 @@ public class ToolsInformationFrame extends JFrame {
         });
         
         contentPane.add( removeButton);
+        
+        lblNewLabel_1 = new JLabel("New label");
+        lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\infobg.png"));
+        lblNewLabel_1.setBounds(0, 0, 745, 438);
+        contentPane.add(lblNewLabel_1);
         
         setVisible(true);
         setLocationRelativeTo(null);
@@ -161,6 +164,4 @@ public class ToolsInformationFrame extends JFrame {
             e.printStackTrace();
         }
     }
-
-        
 }
