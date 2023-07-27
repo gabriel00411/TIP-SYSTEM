@@ -164,7 +164,7 @@ public class ToolsGUI extends JFrame {
 
 
             Imagelbl = new JLabel("");
-            Imagelbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\Tools.png"));
+            Imagelbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\TOOLS (2).png"));
             Imagelbl.setBounds(1, 0, 1280, 761);
             contentPane.add(Imagelbl);
 
