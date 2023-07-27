@@ -115,7 +115,7 @@ public class HomePage extends JFrame {
         });
 		
 		JLabel Imagelbl = new JLabel("");
-		Imagelbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\Home.png"));
+		Imagelbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\Homepage.png"));
 		Imagelbl.setBounds(0, 0, 1280, 761);
 		contentPane.add(Imagelbl);
 	}
