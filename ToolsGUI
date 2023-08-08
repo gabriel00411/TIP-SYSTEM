@@ -57,9 +57,11 @@ public class ToolsGUI extends JFrame {
         
 	public ToolsGUI() {
             
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setBounds(100, 100, 1296, 799);
-            setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1280, 780);
+		setResizable(false); // Set frame not resizable
+		setLocationRelativeTo(null); // Set frame to launch at the center of the screen
+
             contentPane = new JPanel();
             contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -160,6 +162,24 @@ public class ToolsGUI extends JFrame {
             AddBtn.setContentAreaFilled(false);
             AddBtn.setBorderPainted(false);
             contentPane.add(AddBtn);
+            
+
+            AddBtn = new JButton("");
+            AddBtn.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                            ItemTracker contentPane = new ItemTracker();
+                            contentPane.setVisible(true);
+                            dispose();
+                    }
+            });
+
+
+            AddBtn.setBounds(1150, 21, 55, 62);
+            AddBtn.setOpaque(false);
+            AddBtn.setContentAreaFilled(false);
+            AddBtn.setBorderPainted(false);
+            contentPane.add(AddBtn);
+            
 
 
 
@@ -310,6 +330,8 @@ public class ToolsGUI extends JFrame {
           
         }
 
+    
+		
             // create custompanels
         public static JPanel createToolsPanel(String itemText) {
 
@@ -327,6 +349,8 @@ public class ToolsGUI extends JFrame {
 
             return panel;
         }
+        
+        
 
         // Create an empty panel for the cell
         public static JPanel createEmptyPanel() {
